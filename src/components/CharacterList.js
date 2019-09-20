@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Axios from 'axios';
 import CharacterCard from './CharacterCard';
 import styled from 'styled-components';
+//import SearchForm from './SearchForm'
 
-const characterApi = `https://rickandmortyapi.com/api/character/`;
+const characterApi = 'https://rick-api.herokuapp.com/api/character';
 
 const SectionStyle = styled.div`
     display: flex;
@@ -30,26 +31,30 @@ const CharacterListStyle = styled.div`
     }
 `
 
-export default function CharacterList() {
+export default function CharacterList({ searchTerm, onSubmit, characterData, setCharacterData }) {
   // TODO: Add useState to track data from useEffect
 
-  let [characterData, setCharacterData] = useState([]);
+  //let [characterData, setCharacterData] = useState([]);
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     Axios.get(characterApi)
     .then((response) => {
+      debugger
       setCharacterData(response.data.results)
     })
     .catch((error) => {
       //error.message
+      debugger
       console.log('error')
     })
   }, []);
 
   return (
-    <SectionStyle>
+    
+    <SectionStyle onSubmit={onSubmit} searchTerm={searchTerm} >
+      {/* <SearchForm  /> */}
       {characterData.map((character) => <CharacterListStyle>
                                             <CharacterCard created={character.created}
                                                        name={character.name}
