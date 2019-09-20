@@ -1,9 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Axios from 'axios';
 import CharacterCard from './CharacterCard';
-
+import styled from 'styled-components';
 
 const characterApi = `https://rickandmortyapi.com/api/character/`;
+
+const SectionStyle = styled.div`
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+`
+
+const CharacterListStyle = styled.div`
+    background: black;
+    color: white;
+    border: 2px solid black;
+    border-radius: 35%;
+    width: 17em;
+    height: 9em;
+    padding: 2em 0;
+    margin: 2em 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+    h2 {
+      color: yellow;
+    }
+    div {
+      text-align: center;
+    }
+`
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -24,10 +49,12 @@ export default function CharacterList() {
   }, []);
 
   return (
-    <section className="character-list">
-      {characterData.map((character) => <CharacterCard created={character.created}
-                                                       gender={character.gender}
-                                                       name={character.name} />)}
-    </section>
+    <SectionStyle>
+      {characterData.map((character) => <CharacterListStyle>
+                                            <CharacterCard created={character.created}
+                                                       name={character.name}
+                                                       gender={character.gender} />
+                                            </CharacterListStyle>)}
+    </SectionStyle>
   );
 }
