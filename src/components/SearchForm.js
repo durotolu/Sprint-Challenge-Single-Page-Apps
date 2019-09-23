@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 export default function SearchForm(props) {
-  const { onSubmit, searchTerm } = props;
+  const { onSubmit } = props;
   
   return (
     <Formik onSubmit={onSubmit}
@@ -10,7 +10,7 @@ export default function SearchForm(props) {
             return (
                 <Form>
                     <span>
-                        <Field name='name' type='text' placeholder='Name' />
+                        <Field name='name' type='text' placeholder='Search' />
                         <ErrorMessage name='name' component='div' />
                     </span>
                     <button type="submit">Submit</button>

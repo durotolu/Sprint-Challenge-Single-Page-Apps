@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "./components/Header.js";
 import CharacterList from './components/CharacterList';
 import WelcomePage from './components/WelcomePage';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchForm from './components/SearchForm';
 
@@ -14,20 +14,30 @@ const AppStyle = styled.div`
       justify-content: center;
       justify-content: space-evenly;
     }
+
+    .selected {
+      background-color: blue;
+      text-decoration: none;
+    }
 `
 
 export default function App() {
   //const [searchTerm, setSearchTerm] = useState('');
   let [characterData, setCharacterData] = useState([]);
 
-  function onSubmit (e) {
-    const a = characterData;
-    const matchingArray = characterData.filter((el) => (el.name.toLowerCase()).includes(e.name.toLowerCase()));
-    setCharacterData(characterData);
+  function onSubmit (e, a) {
+    //setCharacterData(characterData);
+    console.log(characterData);
+    debugger
+    let matchingArray = characterData.filter((el) => (el.name.toLowerCase()).includes(e.name.toLowerCase()));
+    setCharacterData(matchingArray);
+    //let characterData = setCharacterData(characterData);
     
-    return (
-      <div>{matchingArray.map((el) => <div>{el.name}</div>)}</div>
-    )
+    //a.setValues(setCharacterData(characterData));
+    // return (
+    //   <div>{matchingArray.map((el) => <div>{el.name}</div>)}</div>
+    // )
+    //setCharacterData(characterData);
     //(e.name)
     //setSearchTerm(e.target.value);
   }
@@ -37,8 +47,8 @@ export default function App() {
       <Header />
       <div>
       <SearchForm onSubmit={onSubmit} />
-      <Link to ='/' ><span>Home</span></Link>
-      <Link to={`/characters/`} ><span>Characters</span></Link>
+      <NavLink to ='/' activeClassName="selected" ><span>Home</span></NavLink>
+      <NavLink to={`/characters/`} activeClassName="selected" ><span>Characters</span></NavLink>
       </div>
       <Route exact path='/' component={WelcomePage} />
       <Route path='/characters/' render={props => <CharacterList {...props} characterData={characterData} setCharacterData={setCharacterData} />} />
