@@ -3,7 +3,7 @@ import Axios from "axios";
 import CharacterCard from './CharacterCard';
 import styled from 'styled-components';
 
-//const characterApi = `https://rickandmortyapi.com/api/character/`;
+const characterApi = `https://rickandmortyapi.com/api/character/`;
 
 const SectionStyle = styled.div`
     display: flex;
@@ -30,7 +30,7 @@ const CharacterListStyle = styled.div`
     }
 `
 
-export default function CharacterList({ characterData, setCharacterData }) {
+export default function CharacterList({ characterData, setCharacterData, searchTerm }) {
   // TODO: Add useState to track data from useEffect
 
   //let [characterData, setCharacterData] = useState([]);
@@ -50,7 +50,7 @@ export default function CharacterList({ characterData, setCharacterData }) {
 
   return (
     <SectionStyle>
-      {characterData.map((character) => <CharacterListStyle>
+      {(!searchTerm.length ? characterData : searchTerm ).map((character) => <CharacterListStyle>
                                           <CharacterCard image={character.image}
                                                       created={character.created}
                                                       name={character.name}
