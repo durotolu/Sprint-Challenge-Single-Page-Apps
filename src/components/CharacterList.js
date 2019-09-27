@@ -30,10 +30,10 @@ const CharacterListStyle = styled.div`
     }
 `
 
-export default function CharacterList() {
+export default function CharacterList({ characterData, setCharacterData }) {
   // TODO: Add useState to track data from useEffect
 
-  let [characterData, setCharacterData] = useState([]);
+  //let [characterData, setCharacterData] = useState([]);
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
