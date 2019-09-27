@@ -6,6 +6,7 @@ import CharacterList from './components/CharacterList';
 export default function App() {
   return (
     <main>
+      <WelcomePage />
       <Header />
       <CharacterList />
     </main>
