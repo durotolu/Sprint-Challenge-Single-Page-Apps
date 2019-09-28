@@ -17,7 +17,7 @@ const CharacterListStyle = styled.div`
     border: 2px solid black;
     border-radius: 35%;
     width: 17em;
-    height: 9em;
+    height: 17em;
     padding: 2em 0;
     margin: 2em 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

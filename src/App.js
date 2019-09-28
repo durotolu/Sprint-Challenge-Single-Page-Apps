@@ -9,7 +9,7 @@ import SearchForm from './components/SearchForm';
 const AppStyle = styled.div`
     background: grey;
     
-    div {
+    .nav {
       display: flex;
       justify-content: center;
       justify-content: space-evenly;
@@ -48,7 +48,7 @@ export default function App() {
   return (
     <AppStyle>
       <Header />
-      <div>
+      <div className='nav'>
       <SearchForm onSubmit={onSubmit} />
       <NavLink to='/' activeClassName='selected'><span>Home</span></NavLink>
       <NavLink to={`/characters/`} activeClassName='selected' ><span>Characters</span></NavLink>
