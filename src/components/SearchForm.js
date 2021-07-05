@@ -1,10 +1,21 @@
 import React, { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-export default function SearchForm() {
- 
+export default function SearchForm(props) {
+  const { onSubmit } = props;
+  
   return (
-    <section className="search-form">
-     // Add a search form here
-    </section>
+    <Formik onSubmit={onSubmit}
+        render={props => {
+            return (
+                <Form>
+                    <span>
+                        <Field name='name' type='text' placeholder='Search' />
+                        <ErrorMessage name='name' component='div' />
+                    </span>
+                    <button type="submit">Submit</button>
+                </Form>
+              )
+          }} />
   );
 }
